@@ -3,10 +3,8 @@ package com.boot_learning_lab.controller;
 import com.boot_learning_lab.model.Student;
 import com.boot_learning_lab.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,31 +21,29 @@ public class StudentController {
     }
 
     @PostMapping("/add-student")
-    public Student addStudent(@RequestBody Student obj) {
+    public List<Student> addStudent(@RequestBody List<Student> obj) {
         studentService.addStudent(obj);
         return obj;
     }
 
-    /* *//*  @DeleteMapping("/delete-student/{name}")
-    public void deleteStudent(@PathVariable String name) {
-        for (Student s : students) {
-            if (s.getName().equals(name)) {
-                students.remove(s);
-            }
-        }
+    @DeleteMapping("/delete-student/{name}")
+    public String deleteStudent(@PathVariable String name) {
+        studentService.deleteStudent(name);
+        return name;
     }
 
     @PutMapping("/update-student")
-    public void updateStudent(@RequestBody Student student) {
-        for (Student s : students) {
-            if (s.getName().equals(student.getName())) {
-                s.setCourse(student.getCourse());
-            }
-        }*//*
+    public Student updateStudent(@RequestBody Student student) {
+        studentService.updateStudent(student);
+        return student;
+    }
 
-
-    }*/
-
-
+    @GetMapping("/count-students")
+    public int countStudent() {
+        return studentService.countStudent();
+    }
 }
+
+
+
 
