@@ -1,9 +1,8 @@
 package com.boot_learning_lab.controller;
 
-import com.boot_learning_lab.model.Student;
+import com.boot_learning_lab.model.StudentDto;
 import com.boot_learning_lab.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,12 +15,12 @@ public class StudentController {
 
 
     @GetMapping("/students")
-    public List<Student> student() {
+    public List<StudentDto> student() {
         return studentService.getAllStudent();
     }
 
     @PostMapping("/add-student")
-    public List<Student> addStudent(@RequestBody List<Student> obj) {
+    public List<StudentDto> addStudent(@RequestBody List<StudentDto> obj) {
         studentService.addStudent(obj);
         return obj;
     }
@@ -33,9 +32,9 @@ public class StudentController {
     }
 
     @PutMapping("/update-student")
-    public Student updateStudent(@RequestBody Student student) {
-        studentService.updateStudent(student);
-        return student;
+    public StudentDto updateStudent(@RequestBody StudentDto studentDto) {
+        studentService.updateStudent(studentDto);
+        return studentDto;
     }
 
     @GetMapping("/count-students")

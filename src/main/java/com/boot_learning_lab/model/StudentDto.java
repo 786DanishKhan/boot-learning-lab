@@ -1,11 +1,11 @@
 package com.boot_learning_lab.model;
 
 
-public class Student {
+public class StudentDto {
     private final String name;
     private  String course;
 
-    public Student(String name, String course) {
+    public StudentDto(String name, String course) {
         this.name = name;
         this.course = course;
     }
